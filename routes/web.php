@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\ProductController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.index');
 });
 
 Auth::routes();
