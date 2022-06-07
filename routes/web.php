@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('/dashboard', function () {
         return view('admin.index');
+    
+    Route::get('products', [ProductController::class, 'index']);
+    Route::get('add-products', [ProductController::class, 'add']);
+    Route::post('insert-products', [ProductController::class, 'insert']);
      });
 });
