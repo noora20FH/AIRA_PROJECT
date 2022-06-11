@@ -23,15 +23,15 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Price</label> 
-                    <input type="number" class="form-control name="price">
+                    <input type="number" class="form-control" name="price">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Weight</label> 
-                    <input type="number" class="form-control name="weight">
+                    <input type="number" class="form-control" name="weight">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Stock</label> 
-                    <input type="number" class="form-control name="stock">
+                    <input type="number" class="form-control" name="stock">
                 </div>
                 <div class="col-md-12"> 
                     <button type="submit" class="btn btn-primary">Submit</button>
