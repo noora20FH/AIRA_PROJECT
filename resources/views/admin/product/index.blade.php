@@ -28,7 +28,11 @@
                         <td>{{ $item->prod_name }} </td>
                         <td>{{ $item->description }} </td>
                         <td>
+<<<<<<< HEAD
                             <img src="{{ asset('assets/uploads/products/'.$item->image }}"> 
+=======
+                            <img src="{{ asset('assets/uploads/products/'.$item->image }}" >
+>>>>>>> bd53ee7d73726d88cb5d8fb5cbce8ffa75117843
                         </td>
                         <td>{{ $item->price }} </td>
                         <td>{{ $item->weight }} </td>

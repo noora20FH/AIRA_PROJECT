@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\FrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +16,12 @@ use App\Http\Controllers\Admin\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.index');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', function(){
+    return view('welcome');
+
 });
 
 Auth::routes();
@@ -23,11 +29,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth','isAdmin'])->group(function(){
-    Route::get('/dashboard', function () {
-        return view('admin.index');
-    
-    Route::get('products', [ProductController::class, 'index']);
-    Route::get('add-products', [ProductController::class, 'add']);
-    Route::post('insert-products', [ProductController::class, 'insert']);
-     });
+    Route::get('/dashboard', 'Admin\FrontendController@index');
+   
+    Route::get('categories', 'Admin\CategoryController@index');
+    Route::get('add-category','Admin\CategoryController@add');
+    Route::post('insert-category','Admin\CategoryController@insert');
 });
