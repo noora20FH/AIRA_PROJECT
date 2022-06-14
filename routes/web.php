@@ -4,18 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\WelcomeController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::get('/shop', [WelcomeController::class, 'shop'])->name('shop');
@@ -33,7 +21,7 @@ Route::get('/home', [App\Http\Controllers\WelcomeController::class, 'index'])->n
 
 Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('/dashboard', 'Admin\FrontendController@index');
-                                //without calling class name
+                                //without calling class name -> 'use App\Http\....'
     Route::get('categories', 'Admin\CategoryController@index');
     Route::get('add-category','Admin\CategoryController@add');
     Route::post('insert-category','Admin\CategoryController@insert');
