@@ -35,7 +35,7 @@ class WelcomeController extends Controller
     {
         return view('Shop', [
             "title" => "Shop",
-            "products" => product::all(),
+            // "products" => product::all(),
         ]);
     }
     public function wishlist()
