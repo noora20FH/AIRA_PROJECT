@@ -27,7 +27,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string|null
      */
     protected $namespace = 'App\\Http\\Controllers';
-
+        //you will able to use any new controller in web.php without calling the class name
     /**
      * Define your route model bindings, pattern filters, etc.
      *

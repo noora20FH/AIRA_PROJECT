@@ -33,7 +33,7 @@ Route::get('/home', [App\Http\Controllers\WelcomeController::class, 'index'])->n
 
 Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('/dashboard', 'Admin\FrontendController@index');
-   
+                                //without calling class name
     Route::get('categories', 'Admin\CategoryController@index');
     Route::get('add-category','Admin\CategoryController@add');
     Route::post('insert-category','Admin\CategoryController@insert');
