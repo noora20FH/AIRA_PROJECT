@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\FrontendController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,17 +15,10 @@ use App\Http\Controllers\Admin\FrontendController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::get('/', function(){
-    return view('welcome');
-
-});
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\WelcomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('/dashboard', 'Admin\FrontendController@index');
