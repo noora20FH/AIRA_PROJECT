@@ -23,7 +23,7 @@
 
     <!-- Start copyright  -->
     <div class="footer-copyright">
-        <p class="footer-company">All Rights Reserved. &copy; 2022 <a href="#">NAF-STORE</a></p>
+        <p class="footer-company">All Rights Reserved. &copy; 2022 <a href="#">AIRA Cosmetics</a></p>
     </div>
     <!-- End copyright  -->
 
