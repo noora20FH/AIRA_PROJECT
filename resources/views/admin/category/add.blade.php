@@ -49,10 +49,15 @@
                             <textarea name="meta_keywords" rows="3" class="form-control"></textarea>
                         </div>
 
-                        <div class="col-md-12 ">
+                        <!-- <div class="col-md-12 ">
                             <input type="file" name="image" class="form-control">
-                        </div>
+                        </div> -->
 
+                        <div class="col-md-12 mb-3">
+                            <label for="image" class="form-label">Add Image</label>
+                            <input class="form-control" type="file" id="image" name="image">
+                        </div>
+                        
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>

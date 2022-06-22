@@ -24,5 +24,6 @@ Route::middleware(['auth','isAdmin'])->group(function(){
                                 //without calling class name -> 'use App\Http\....'
     Route::get('categories', 'Admin\CategoryController@index');
     Route::get('add-category','Admin\CategoryController@add');
-    Route::post('insert-category','Admin\CategoryController@insert');
+    Route::post('insert-category','Admin\CategoryController@store');
+    Route::post('edit-category','Admin\CategoryController@edit');
 });

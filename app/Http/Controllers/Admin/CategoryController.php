@@ -19,18 +19,25 @@ class CategoryController extends Controller
         return view('admin.category.add');
     }
 
-    public function insert(Request $request){
+    public function store(Request $request){ //same as store(Request $request)
+        // ddd($request); //Dump,Die,Debug
+        // return $request->file('image')->store('post-images');
        $category = new Category();
-       if($request->hasFile('image'))
-       {
-           $file = $request->file('image');
-           $ext = $file->getClientOriginalExtension();
-           $filename = time().'.'.$ext;
-           $file->move('assets/uploads/category'.$filename);
-           $category->image = $filename;
+        //    if($request->hasFile('image'))
+        //    {
+        //        $file = $request->file('image');
+        //        $ext = $file->getClientOriginalExtension();
+        //        $filename = time().'.'.$ext;
+        //        $file->move('assets/uploads/category',$filename);
+        //        $category->image = $filename;
 
-       }
+        //    }
+           if($request->file('image'))
+           {
+               $category->image = $request->file('image')->store('post-images');
 
+           }
+        
        $category->name = $request->input('name');
        $category->slug = $request->input('slug');
        $category->description = $request->input('description');
@@ -42,4 +49,45 @@ class CategoryController extends Controller
        $category->save();
        return redirect('/dashboard')->with('status',"Category Added Successfully");
     }
+
+    public function edit($id)
+    {
+        $model = Category::find($id);
+        return view(
+            'admin.category.edit', 
+            compact('model')
+        );
+    }
+
+    public function update(Request $request, $id)
+    {
+        //validate the data
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            // 'password' => 'required',
+            'address' => 'required',
+            'postal_code' => 'required', 
+            ]);
+            //Eloquent function to update the data
+        $model = User::find($id);
+        $model->name = $request->get('name');
+        $model->phone = $request->get('phone');
+        $model->email = $request->get('email');
+        $model->password = $request->get('phone');
+        $model->address = $request->get('address');
+        $model->postal_code = $request->get('postal_code');
+        $model->save();
+
+        return redirect('customerData');
+    }
+
+    public function destroy($id)
+    { 
+        User::where('id', $id)->delete();
+        return redirect()->route('customerData.index');
+        
+    }
+
 }
