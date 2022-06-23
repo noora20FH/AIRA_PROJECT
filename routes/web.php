@@ -26,4 +26,9 @@ Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('add-category','Admin\CategoryController@add');
     Route::post('insert-category','Admin\CategoryController@store');
     Route::post('edit-category','Admin\CategoryController@edit');
+    
+    Route::get('products', 'Admin\ProductController@index');
+    Route::get('add-products','Admin\ProductController@add');
+    Route::post('insert-product','Admin\ProductController@store');
+    Route::post('edit-product','Admin\ProductController@edit');
 });

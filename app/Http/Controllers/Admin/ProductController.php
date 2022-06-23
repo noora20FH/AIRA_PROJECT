@@ -18,24 +18,30 @@ class ProductController extends Controller
         return view('admin.product.add', compact('products'));
     }
 
-    public function insert (Request $request){
+    public function store (Request $request){
+        // ddd($request); 
         $products = new Product();
-        if(request->hasFile('image')){
-            $file = request->file('image');
-            $ext = $file->getClientOriginalExtension();
-            $filename= time(). '.'.$ext;
-            $file->move('assets/uploads/products/',$filename);
-            $products->image =$filename;
+        // if(request->hasFile('image')){
+        //     $file = request->file('image');
+        //     $ext = $file->getClientOriginalExtension();
+        //     $filename= time(). '.'.$ext;
+        //     $file->move('assets/uploads/products/',$filename);
+        //     $products->image =$filename;
+        // }
+        if($request->file('image'))
+        {
+            $products->image = $request->file('image')->store('post-images');
+
         }
 
         $products->prod_name = $request->input('prod_name');
         $products->description = $request->input('description');
-        $products->image = $request->input('image');
+        
         $products->price = $request->input('price');
         $products->weight = $request->input('weight');
         $products->stock = $request->input('stock');
         $products->save();
-        return redirect('products')->with('status', "Product Added Successfully");
+        return redirect('/dashboard')->with('status', "Product Added Successfully");
         
     }
 }

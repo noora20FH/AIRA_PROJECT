@@ -42,13 +42,13 @@
             </a>
           </li>
         
-          <li class="nav-item {{ Request::is('products') ? 'active':''}}">
+          <li class="nav-item ">
             <a class="nav-link" href="{{ url('products') }}">
               <i class="material-icons">person</i>
               <p>Products</p>
           </a>
           </li>
-          <li class="nav-item {{ Request::is('add-products') ? 'active':''}}">
+          <li class="nav-item">
             <a class="nav-link" href="{{ url('add-products') }}">
               <i class="material-icons">person</i>
               <p>Add Products</p>

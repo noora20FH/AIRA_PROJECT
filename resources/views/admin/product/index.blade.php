@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="card">
-        <div class="card header">
+        <div class="card-header">
             <h4>Product Page</h4>
             <hr>
 
         </div>
-        <div class="card body">
+        <div class="card-body">
             <table class="table table-bordered table-stripped">
                 <thead>
                     <tr>
@@ -18,6 +18,7 @@
                         <th>Price</th>
                         <th>Weight</th>
                         <th>Stock</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,11 +29,7 @@
                         <td>{{ $item->prod_name }} </td>
                         <td>{{ $item->description }} </td>
                         <td>
-<<<<<<< HEAD
-                            <img src="{{ asset('assets/uploads/products/'.$item->image }}"> 
-=======
-                            <img src="{{ asset('assets/uploads/products/'.$item->image }}" >
->>>>>>> bd53ee7d73726d88cb5d8fb5cbce8ffa75117843
+                        <img src="{{ asset('storage/'.$item->image) }}" class ="cate-image" alt="image here">
                         </td>
                         <td>{{ $item->price }} </td>
                         <td>{{ $item->weight }} </td>
