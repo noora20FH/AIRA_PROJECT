@@ -22,26 +22,7 @@
               <p>Add Category</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
-              <i class="material-icons">content_paste</i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
-              <i class="material-icons">library_books</i>
-              <p>Typography</p>
-            </a>
-          </li>
           
-          <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
-              <i class="material-icons">notifications</i>
-              <p>Notifications</p>
-            </a>
-          </li>
-        
           <li class="nav-item ">
             <a class="nav-link" href="{{ url('products') }}">
               <i class="material-icons">person</i>
@@ -58,9 +39,10 @@
           <li class="nav-item ">
             <a class="nav-link" href="#">
               <i class="material-icons">content_paste</i>
-              <p>Table List</p>
+              <p>Customer Order</p>
             </a>
           </li>
+          
         </ul>
       </div>
     </div>
