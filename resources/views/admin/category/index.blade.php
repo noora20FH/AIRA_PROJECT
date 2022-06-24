@@ -27,7 +27,7 @@
                         </td>
                         
                         <td>
-                        <a class="btn btn-primary" href="{{ url('edit-category',$item->id) }}">Edit</a>
+                        <a class="btn btn-primary" href="{{ url('edit-prod/'.$item->id) }}">Edit</a>
                         
                             <button class="btn btn-danger">Delete</button>
                         </td>

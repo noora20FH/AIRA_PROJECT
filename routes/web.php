@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\Admin\CategoryController;
 
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
@@ -25,10 +26,12 @@ Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('categories', 'Admin\CategoryController@index');
     Route::get('add-category','Admin\CategoryController@add');
     Route::post('insert-category','Admin\CategoryController@store');
-    Route::post('edit-category','Admin\CategoryController@edit');
+    Route::get('edit-prod/{id}',[CategoryController::class,'edit']);//update-category
+    Route::put('update-category/{id}',[CategoryController::class,'update']);
     
     Route::get('products', 'Admin\ProductController@index');
     Route::get('add-products','Admin\ProductController@add');
     Route::post('insert-product','Admin\ProductController@store');
     Route::post('edit-product','Admin\ProductController@edit');
+    
 });

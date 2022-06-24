@@ -1,53 +1,72 @@
-@extends('layouts.crudLayout')
+@extends('layouts.admin')
+
 @section('content')
-<div class="container mt-5">
-    <div class="row justify-content-center align-items-center">
-        <div class="card" style="width: 24rem;">
-            <div class="card-header">
-                Update Customer Data
-            </div>
-            <div class="card-body">
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                    <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                    </ul>
-                </div>
-                @endif
-
-                <form method="post" action="{{ url('edit-category') }}" id="myForm"  enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" name="name" class="form-control" id="name" aria-describedby="name" value="{{$model->name}}">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="text" name="phone" class="form-control" id="phone" aria-describedby="phone" value="{{$model->phone}}">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="text" name="email" class="form-control" id="email" aria-describedby="email" value="{{$model->email}}">
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" name="address" class="form-control" id="address" aria-describedby="address" value="{{$model->address}}">
-                    </div>
-                    <div class="form-group">
-                        <label for="postal_code">Postal Code</label>
-                        <input type="text" name="postal_code" class="form-control" id="postal_code" aria-describedby="postal_code" value="{{$model->postal_code}}">
-                    </div>
-
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>    
+    <div class="card">
+        <div class="card-header">
+            <h4>Edit Category</h4>
         </div>
-    </div>
-</div>
+            <div class="card-body">
+                <form action="{{ url('update-category/'.$category->id) }}" method="POST" enctype="multipart/form-data"> 
+                    @csrf 
+                   @method('PUT')
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="">Name</label>
+                            <input type="text" class="form-control" name="name" value='{{$category->name}}'>
+                        </div>
 
+                        <div class="col-md-6 mb-3">
+                            <label for="">Slug</label>
+                            <input type="text" class="form-control" name="slug" value='{{$category->slug}}'>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label for="">Description</label>
+                            <textarea name="description" rows="3" class="form-control" >{{$category->description}}</textarea>
+                        </div>
+
+                        <div class="col-md-6 mb-3"> 
+                            <label for="">Status</label>
+                            <input type="checkbox" {{ $category->status == "1"? 'checked':'' }} name="status" >
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="">Popular</label>
+                            <input type="checkbox" name="popular" {{ $category->popular == "1"? 'checked':'' }} >
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label for="">Meta Title</label>
+                            <input type="text" class="form-control" name="meta_title" value='{{$category->meta_title}}'>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label for="">Meta Description</label>
+                            <textarea name="meta_description" rows="3" class="form-control" >{{$category->meta_descrip}}</textarea>
+                        </div>
+
+                        <div class="col-md-12 mb-3"> 
+                            <label for="">Meta Keywords</label>
+                            <textarea name="meta_keywords" rows="3" class="form-control" >{{$category->meta_keywords}}</textarea>
+                        </div>
+
+                        <!-- <div class="col-md-12 ">
+                            <input type="file" name="image" class="form-control">
+                        </div> -->
+                        @if($category->image)
+                        <img src="{{ asset('storage/'.$category->image) }}" alt="Category image" class="ml-3">
+                        @endif
+
+                        <div class="col-md-12 mb-3">
+                            
+                            <input class="form-control" type="file" id="image" name="image" >
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>   
+                </form>
+            </div>
+    </div>
 @endsection

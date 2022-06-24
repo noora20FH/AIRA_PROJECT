@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use DB;
+use Illuminate\Support\Facades\File;
 
 
 class CategoryController extends Controller
@@ -52,36 +53,67 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        $model = Category::find($id);
+        $category = Category::find($id);
         return view(
             'admin.category.edit', 
-            compact('model')
+            compact('category')
         );
     }
 
     public function update(Request $request, $id)
     {
-        //validate the data
-        $request->validate([
-            'name' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
-            // 'password' => 'required',
-            'address' => 'required',
-            'postal_code' => 'required', 
-            ]);
-            //Eloquent function to update the data
-        $model = User::find($id);
-        $model->name = $request->get('name');
-        $model->phone = $request->get('phone');
-        $model->email = $request->get('email');
-        $model->password = $request->get('phone');
-        $model->address = $request->get('address');
-        $model->postal_code = $request->get('postal_code');
-        $model->save();
+        $category = Category::find($id);
 
-        return redirect('customerData');
+        // if($request->hasFile('image')){
+        //     $path='assets/uploads/category/'.$category->image;
+        //     if(File::exists($path)){
+        //         File::delete($path);
+        //     }
+
+        //     // $file = $request->file('image');
+        //     // $ext = $file->getClientOriginalExtension();
+        //     // $filename= time(). '.'.$ext;
+        //     // $file->move('assets/uploads/products/',$filename);
+        //     // $products->image =$filename;
+
+        // }
+        if($request->file('image'))
+        {
+            $category->image = $request->file('image')->store('post-images');
+
+        }
+        $category->name = $request->input('name');
+       $category->slug = $request->input('slug');
+       $category->description = $request->input('description');
+       $category->status = $request->input('status') == TRUE ? '1':'0';
+       $category->popular = $request->input('popular') == TRUE ? '1':'0';
+       $category->meta_title = $request->input('meta_title');
+       $category->meta_descrip = $request->input('meta_description');
+       $category->meta_keywords = $request->input('meta_keywords');
+       $category->update();
+        // //validate the data
+        // $request->validate([
+        //     'name' => 'required',
+        //     'phone' => 'required',
+        //     'email' => 'required',
+        //     // 'password' => 'required',
+        //     'address' => 'required',
+        //     'postal_code' => 'required', 
+        //     ]);
+        //     //Eloquent function to update the data
+        // $model = User::find($id);
+        // $model->name = $request->get('name');
+        // $model->phone = $request->get('phone');
+        // $model->email = $request->get('email');
+        // $model->password = $request->get('phone');
+        // $model->address = $request->get('address');
+        // $model->postal_code = $request->get('postal_code');
+        // $model->save();
+
+        return redirect('dashboard')->with('status','Updated Successfully');
     }
+
+    
 
     public function destroy($id)
     { 
