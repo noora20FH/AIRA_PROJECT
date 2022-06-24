@@ -6,7 +6,8 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; //added
 
-class OwnerMiddleware
+
+class CustomerMiddleware
 {
     /**
      * Handle an incoming request.
@@ -19,7 +20,7 @@ class OwnerMiddleware
     {
         if(Auth::check())
         {
-            if(Auth::user()->role_as == '2')
+            if(Auth::user()->role_as == '0')
             {
                 return $next($request);
             }
