@@ -31,6 +31,11 @@ class WelcomeController extends Controller
         ]);
     }
 
+    public function blank()
+    {
+        return view('blank');
+    }
+
     public function shop()
     {
         return view('Shop', [

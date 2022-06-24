@@ -14,7 +14,7 @@ Route::get('/checkout', [WelcomeController::class, 'checkout'])->name('checkout'
 
 Route::get('/sign-in', [WelcomeController::class, 'SignIn'])->name('auth.sign-in');
 Route::get('/sign-up', [WelcomeController::class, 'SignUp'])->name('auth.sign-up');
-
+Route::get('/blank', [WelcomeController::class, 'blank'])->name('blank');
 
 Auth::routes();
 
@@ -33,5 +33,12 @@ Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('add-products','Admin\ProductController@add');
     Route::post('insert-product','Admin\ProductController@store');
     Route::post('edit-product','Admin\ProductController@edit');
+
+    
     
 });
+
+Route::middleware(['auth','isOwner'])->group(function(){
+    Route::resource('/owner',OwnerController::class);
+});
+
