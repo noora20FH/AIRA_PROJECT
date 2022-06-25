@@ -36,7 +36,7 @@
                         <td>{{ $item->stock }} </td>
                         <td>
                             <a href="{{ url('edit-prod/'.$item->id) }}" class="btn btn-primary">Edit</a>
-                            <a href="{{ url('delete-prod/'.$item->id) }}" class="btn btn-danger">Delete</a>
+                            <a href="{{ url('delete-product/'.$item->id) }}" class="btn btn-danger">Delete</a>
                     </tr>
                 @endforeach
             </tbody>

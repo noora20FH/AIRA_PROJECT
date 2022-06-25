@@ -44,4 +44,74 @@ class ProductController extends Controller
         return redirect('/dashboard')->with('status', "Product Added Successfully");
         
     }
+    public function edit($id)
+    {
+        $products = Product::find($id);
+        return view(
+            'admin.product.edit', 
+            compact('products')
+        );
+    }
+
+    public function update(Request $request, $id)
+    {
+        $products = Product::find($id);
+
+        // if($request->hasFile('image')){
+        //     $path='assets/uploads/category/'.$category->image;
+        //     if(File::exists($path)){
+        //         File::delete($path);
+        //     }
+
+        //     // $file = $request->file('image');
+        //     // $ext = $file->getClientOriginalExtension();
+        //     // $filename= time(). '.'.$ext;
+        //     // $file->move('assets/uploads/products/',$filename);
+        //     // $products->image =$filename;
+
+        // }
+        if($request->file('image'))
+        {
+            $products->image = $request->file('image')->store('post-images');
+
+        }
+        $products->prod_name = $request->input('prod_name');
+        $products->description = $request->input('description');
+        $products->price = $request->input('price');
+        $products->weight = $request->input('weight');
+        $products->stock = $request->input('stock');
+        $products->update();
+        // //validate the data
+        // $request->validate([
+        //     'name' => 'required',
+        //     'phone' => 'required',
+        //     'email' => 'required',
+        //     // 'password' => 'required',
+        //     'address' => 'required',
+        //     'postal_code' => 'required', 
+        //     ]);
+        //     //Eloquent function to update the data
+        // $model = User::find($id);
+        // $model->name = $request->get('name');
+        // $model->phone = $request->get('phone');
+        // $model->email = $request->get('email');
+        // $model->password = $request->get('phone');
+        // $model->address = $request->get('address');
+        // $model->postal_code = $request->get('postal_code');
+        // $model->save();
+
+        return redirect('products')->with('status','Updated Successfully');
+    }
+    public function destroy(Request $request, $id)
+    {
+        $products= Product::find($id);
+        if($request->file('image'))
+        {
+            $products->image = $request->file('image')->store('post-images');
+
+        }
+        $products->delete();
+        return redirect('products');
+    }
+
 }

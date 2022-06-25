@@ -27,18 +27,19 @@ Route::middleware(['auth','isCustomer'])->group(function(){
 Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('/dashboard', 'Admin\FrontendController@index');
                                 //without calling class name -> 'use App\Http\....'
-    Route::get('categories', 'Admin\CategoryController@index');
-    Route::get('add-category','Admin\CategoryController@add');
-    Route::post('insert-category','Admin\CategoryController@store');
-    Route::get('edit-prod/{id}',[CategoryController::class,'edit']);//update-category
-    Route::put('update-category/{id}',[CategoryController::class,'update']);
+    // Route::get('categories', 'Admin\CategoryController@index');
+    // Route::get('add-category','Admin\CategoryController@add');
+    // Route::post('insert-category','Admin\CategoryController@store');
+    // Route::get('edit-category/{id}',[CategoryController::class,'edit']);//update-category
+    // Route::put('update-category/{id}',[CategoryController::class,'update']);
     
     Route::get('products', 'Admin\ProductController@index');
     Route::get('add-products','Admin\ProductController@add');
     Route::post('insert-product','Admin\ProductController@store');
     Route::post('edit-product','Admin\ProductController@edit');
-
-    
+    Route::get('edit-prod/{id}',[ProductController::class,'edit']);//update-product
+    Route::put('update-product/{id}',[ProductController::class,'update']);//update-product
+    Route::get('delete-product/{id}',[ProductController::class,'destroy']);//update-product
     
 });
 
