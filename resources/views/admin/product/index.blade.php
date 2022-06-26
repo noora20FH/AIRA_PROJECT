@@ -35,8 +35,10 @@
                         <td>{{ $item->weight }} </td>
                         <td>{{ $item->stock }} </td>
                         <td>
+                            <a href="{{ url('detail-product/'.$item->id) }}" class="btn btn-info">Detail</a>
                             <a href="{{ url('edit-prod/'.$item->id) }}" class="btn btn-primary">Edit</a>
                             <a href="{{ url('delete-product/'.$item->id) }}" class="btn btn-danger">Delete</a>
+                            </td>
                     </tr>
                 @endforeach
             </tbody>

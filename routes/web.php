@@ -39,7 +39,8 @@ Route::middleware(['auth','isAdmin'])->group(function(){
     Route::post('edit-product','Admin\ProductController@edit');
     Route::get('edit-prod/{id}',[ProductController::class,'edit']);//update-product
     Route::put('update-product/{id}',[ProductController::class,'update']);//update-product
-    Route::get('delete-product/{id}',[ProductController::class,'destroy']);//update-product
+    Route::get('delete-product/{id}',[ProductController::class,'destroy']);//delete-product
+    Route::get('detail-product/{id}',[ProductController::class,'show'])->name('admin.product.detail');
     
 });
 

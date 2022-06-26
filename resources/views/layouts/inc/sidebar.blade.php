@@ -10,7 +10,7 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <!-- <li class="nav-item ">
             <a class="nav-link" href="{{ url('categories') }}">
               <i class="material-icons">person</i>
               <p>Categories</p>
@@ -21,7 +21,7 @@
               <i class="material-icons">person</i>
               <p>Add Category</p>
             </a>
-          </li>
+          </li> -->
           
           <li class="nav-item ">
             <a class="nav-link" href="{{ url('products') }}">

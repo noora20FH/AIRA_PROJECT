@@ -102,6 +102,16 @@ class ProductController extends Controller
 
         return redirect('products')->with('status','Updated Successfully');
     }
+
+    public function show($id)
+    {
+        $model = Product::find($id);
+        return view(
+            'admin.product.detail', 
+            compact('model')
+        );
+    }
+
     public function destroy(Request $request, $id)
     {
         $products= Product::find($id);
