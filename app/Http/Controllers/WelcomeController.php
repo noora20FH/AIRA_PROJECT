@@ -9,6 +9,7 @@ use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Evidence_shipping;
 use App\Models\Order;
+use App\Models\Wishlist;
 
 class WelcomeController extends Controller
 {
@@ -57,8 +58,10 @@ class WelcomeController extends Controller
     public function wishlist()
     {
         if (Auth::check()) {
-            return view('Wishlist', [
-                "title" => "Wishlist"
+            $wishlist = Wishlist::where('user_id', Auth::id())->get();
+            return view('wishlist', [
+                "title" => "Wishlist",
+                'wishlists' => $wishlist,
             ]);
         } else {
             return view('Wishlist', [
@@ -67,6 +70,7 @@ class WelcomeController extends Controller
             ]);
         }
     }
+    
     public function cart()
     {
         if (Auth::check()) {

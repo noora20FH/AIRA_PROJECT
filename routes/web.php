@@ -29,7 +29,6 @@ Route::middleware(['auth','isCustomer'])->group(function(){
     Route::get('/wishlist', [WelcomeController::class, 'wishlist'])->name('wishlist');
     Route::get('/cart', [WelcomeController::class, 'cart'])->name('cart');
     Route::get('/checkout', [WelcomeController::class, 'checkout'])->name('checkout');
-
 });
 
 Route::middleware(['auth','isAdmin'])->group(function(){
