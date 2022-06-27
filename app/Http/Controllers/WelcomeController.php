@@ -136,4 +136,13 @@ class WelcomeController extends Controller
             "title" => "Sign Up"
         ]);
     }
+
+    public function profile()
+    {
+        $model = Auth::user();
+
+        return view('profile',compact('model'), [
+            "title" => "Profile"
+        ]);
+    }
 }

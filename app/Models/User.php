@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Profile;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -44,5 +45,9 @@ class User extends Authenticatable
 
     public function store(){
         return $this->belongsTo(Store::class);
+    }
+    public function profile()
+    {
+        return $this->hasOne(Profile::class,'id');
     }
 }

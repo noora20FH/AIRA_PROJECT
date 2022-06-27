@@ -1,9 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\StoreController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OwnerController;
 
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
@@ -14,6 +19,8 @@ Auth::routes();
 
 Route::get('/sign-in', [WelcomeController::class, 'SignIn'])->name('auth.sign-in');
 Route::get('/sign-up', [WelcomeController::class, 'SignUp'])->name('auth.sign-up');
+Route::GET('/user/profile', [WelcomeController::class, 'profile'])->name('userProfile');
+Route::put('/user/profile/update', [CustomerController::class, 'profile'])->name('customerData.profile');
 
 Route::middleware(['auth','isCustomer'])->group(function(){
     Route::get('/home', [App\Http\Controllers\WelcomeController::class, 'index'])->name('home');
