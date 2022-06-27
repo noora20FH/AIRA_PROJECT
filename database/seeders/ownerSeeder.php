@@ -17,9 +17,17 @@ class ownerSeeder extends Seeder
     {
         DB::table('users')->insert([
             
-            'name' => 'Sheeran',
-            'email'=> 'sheeran@gmail.com',
-            'password'=> Hash::make('sheeran123'),
+            'name' => 'Nuril',
+            'email'=> 'nuril@gmail.com',
+            'password'=> Hash::make('nuril123'),
+            'role_as'=> 2,
+
+        ]);
+        DB::table('users')->insert([
+            
+            'name' => 'Liliana',
+            'email'=> 'liliana@gmail.com',
+            'password'=> Hash::make('liliana123'),
             'role_as'=> 2,
 
         ]);

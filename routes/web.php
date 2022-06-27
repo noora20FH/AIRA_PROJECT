@@ -41,6 +41,9 @@ Route::middleware(['auth','isAdmin'])->group(function(){
     Route::put('update-product/{id}',[ProductController::class,'update']);//update-product
     Route::get('delete-product/{id}',[ProductController::class,'destroy']);//delete-product
     Route::get('detail-product/{id}',[ProductController::class,'show'])->name('admin.product.detail');
+
+    Route::resource('storeData',StoresController::class);
+    //    Route::resource('transaction',TransactionController::class);
     
 });
 
