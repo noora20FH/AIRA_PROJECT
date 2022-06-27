@@ -43,11 +43,12 @@
           </a>
           </li>
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="{{ url('transaction') }}">
               <i class="material-icons">person</i>
               <p>Transactions</p>
-          </a>
+          </a> 
+</li>-->
           
           <li class="nav-item ">
             <a class="nav-link" href="#">

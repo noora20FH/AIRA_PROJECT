@@ -55,6 +55,7 @@ Route::middleware(['auth','isAdmin'])->group(function(){
 });
 
 Route::middleware(['auth','isOwner'])->group(function(){
-    Route::resource('/owner',OwnerController::class);
+    // Route::resource('/owner',OwnerController::class);
+    Route::get('/owner', 'OwnerController@index');
 });
 
