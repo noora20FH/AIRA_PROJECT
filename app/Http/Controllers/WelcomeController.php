@@ -43,6 +43,15 @@ class WelcomeController extends Controller
             // "products" => product::all(),
         ]);
     }
+
+    public function product()
+    {
+        return view('productOwner', [
+            "title" => "Product",
+            "products" => product::all(),
+        ]);
+    }
+
     public function wishlist()
     {
         if (Auth::check()) {
