@@ -7,6 +7,8 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Evidence_shipping;
+use App\Models\Order;
 
 class WelcomeController extends Controller
 {
@@ -98,9 +100,20 @@ class WelcomeController extends Controller
     }
     public function transaction()
     {
+        $order = Order::all();
+        $evidence = Evidence_shipping::join('orders', 'Evidence_shipping.order_id', '=', 'orders.id')->get();
+                                    
+        // $evidences = Evidence_shipping::where('order_id', Order::id())->get();
         return view('admin.transaction', [
-            "title" => "transaction"
+            "title" => "transaction",
+            'orders' => $order,
+            'evidence'=> $evidence,
         ]);
+    }
+
+    public function updateOrder($id, $status){
+        $cart = Order::where('id', $id)->increment('status', $status);
+        return redirect()->back();
     }
 
     //Owner Side
