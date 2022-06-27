@@ -50,6 +50,15 @@ Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('detail-product/{id}',[ProductController::class,'show'])->name('admin.product.detail');
 
     Route::resource('storeData',StoresController::class);
+
+    Route::get('customerData','CustomerController@index');
+    Route::get('customerData/create','CustomerController@create');
+    Route::post('customerData/store','CustomerController@store');//customerData/destroy
+    Route::get('customerData/destroy/{id}',[CustomerController::class,'destroy']);
+    Route::get('customerData/show/{id}',[CustomerController::class,'show']);
+    Route::get('customerData/edit/{id}',[CustomerController::class,'edit']);
+    Route::put('customerData/update/{id}',[CustomerController::class,'update']);
+    //customerData/update/
     //    Route::resource('transaction',TransactionController::class);
     
 });

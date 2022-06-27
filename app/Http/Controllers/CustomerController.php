@@ -21,10 +21,33 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function index()
+    {
+        $customers = DB::table('users')->where('role_as', '0')->get();
+        return view('admin.customerData.customerData', compact('customers'),  [
+            "title" => "NAF-STORE-Admin",
+
+        ]);
+
+    }
+
+
+
+    public function create()
+    {
+        $model = new User;
+        return view(
+            'admin.customerData.customerCreate', 
+            compact('model')
+    );
+    }
+
+
     public function store(Request $request)
     {
         $model = new User;
         $model->name = $request->name;
+        $model->phone = $request->phone;
         $model->email = $request->email;
         $model->password = Hash::make($request['phone']);
         $model->address = $request->address;
@@ -42,7 +65,7 @@ class CustomerController extends Controller
     {
         $model = User::find($id);
         return view(
-            'admin.customerDetail', 
+            'admin.customerData.customerDetail', 
             compact('model')
         );
     }
@@ -56,7 +79,7 @@ class CustomerController extends Controller
     {
         $model = User::find($id);
         return view(
-            'admin.customerEdit', 
+            'admin.customerData.customerEdit', 
             compact('model')
     );
     }
@@ -96,10 +119,12 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     { 
-        User::where('id', $id)->delete();
-        return redirect()->route('customerData.index');
+        $customer=User::where('id', $id);
+        $customer->delete();
+        return redirect('customerData');
 
     }
+    
     public function profile(Request $request)
     { 
         //validate the data

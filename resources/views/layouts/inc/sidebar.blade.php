@@ -36,12 +36,20 @@
           </a>
           </li>
 
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('customerData') }}">
+              <i class="material-icons">person</i>
+              <p>Customer Data</p>
+          </a>
+          </li>
+<!-- 
           <li class="nav-item">
             <a class="nav-link" href="{{ url('storeData') }}">
               <i class="material-icons">person</i>
               <p>Store Data</p>
           </a>
-          </li>
+          </li> -->
 
           <!-- <li class="nav-item">
             <a class="nav-link" href="{{ url('transaction') }}">
