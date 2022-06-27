@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             
             'name' => 'Nian Gita',
+            'phone'=> '089372748834',
             'email'=> 'nian@gmail.com',
             'password'=> Hash::make('niangita123'),
             'role_as'=> 1,
@@ -28,6 +29,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             
             'name' => 'Dimas',
+            'phone'=> '089374658834',
             'email'=> 'dimas@gmail.com',
             'password'=> Hash::make('dimas123'),
             'role_as'=> 1,

@@ -21,6 +21,7 @@ Route::get('/sign-in', [WelcomeController::class, 'SignIn'])->name('auth.sign-in
 Route::get('/sign-up', [WelcomeController::class, 'SignUp'])->name('auth.sign-up');
 Route::GET('/user/profile', [WelcomeController::class, 'profile'])->name('userProfile');
 Route::put('/user/profile/update', [CustomerController::class, 'profile'])->name('customerData.profile');
+Route::put('update-order/{id}/{status}',[WelcomeController::class, 'updateOrder']);
 
 Route::middleware(['auth','isCustomer'])->group(function(){
     Route::get('/home', [App\Http\Controllers\WelcomeController::class, 'index'])->name('home');
@@ -50,6 +51,17 @@ Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('detail-product/{id}',[ProductController::class,'show'])->name('admin.product.detail');
 
     Route::resource('storeData',StoresController::class);
+
+    Route::get('customerData','CustomerController@index');
+    Route::get('customerData/create','CustomerController@create');
+    Route::post('customerData/store','CustomerController@store');//customerData/destroy
+    Route::get('customerData/destroy/{id}',[CustomerController::class,'destroy']);
+    Route::get('customerData/show/{id}',[CustomerController::class,'show']);
+    Route::get('customerData/edit/{id}',[CustomerController::class,'edit']);
+    Route::put('customerData/update/{id}',[CustomerController::class,'update']);
+
+    Route::get('/transaction', [WelcomeController::class, 'transaction'])->name('transaction');
+    //customerData/update/
     //    Route::resource('transaction',TransactionController::class);
     
 });
