@@ -9,6 +9,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\CartController;
 
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
@@ -22,12 +23,14 @@ Route::get('/sign-up', [WelcomeController::class, 'SignUp'])->name('auth.sign-up
 Route::GET('/user/profile', [WelcomeController::class, 'profile'])->name('userProfile');
 Route::put('/user/profile/update', [CustomerController::class, 'profile'])->name('customerData.profile');
 Route::put('update-order/{id}/{status}',[WelcomeController::class, 'updateOrder']);
+Route::get('/updatecart/{id}/{quantity}', [CartController::class, 'update']);
+Route::get('/deletecart/{carts}', [CartController::class, 'destroy']);
 
 Route::middleware(['auth','isCustomer'])->group(function(){
     Route::get('/home', [App\Http\Controllers\WelcomeController::class, 'index'])->name('home');
     Route::get('/shop', [WelcomeController::class, 'shop'])->name('shop');
     Route::get('/wishlist', [WelcomeController::class, 'wishlist'])->name('wishlist');
-    Route::get('/cart', [WelcomeController::class, 'cart'])->name('cart');
+    Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::get('/checkout', [WelcomeController::class, 'checkout'])->name('checkout');
 });
 

@@ -74,11 +74,11 @@ class WelcomeController extends Controller
     public function cart()
     {
         if (Auth::check()) {
-            return view('Cart', [
+            return view('cart', [
                 "title" => "Cart"
             ]);
         } else {
-            return view('Cart', [
+            return view('cart', [
                 "title" => "Cart",
                 'errors' => 'You need to login first. :)'
             ]);
