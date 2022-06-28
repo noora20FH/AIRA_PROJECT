@@ -16,7 +16,7 @@
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                     <li class="{{ ($title === "Home") ? 'nav-item active' : 'nav-item'}}"><a class="nav-link" href="/owner">Home</a></li>
                     <li class="{{ ($title === "Customer_Order") ? 'nav-item active' : 'nav-item'}}"><a class="nav-link" href="">Customer Order</a></li>
-                    <li class="{{ ($title === "Transaction") ? 'nav-item active' : 'nav-item'}}"><a class="nav-link" href="">Transaction</a></li>
+                    <li class="{{ ($title === "Transaction") ? 'nav-item active' : 'nav-item'}}"><a class="nav-link" href="/transactionOwner">Transaction</a></li>
                     <li class="{{ ($title === "Product List") ? 'nav-item active' : 'nav-item'}}"><a class="nav-link" href="/productowner">Product</a></li>
                 </ul>
             </div>

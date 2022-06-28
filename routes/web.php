@@ -69,5 +69,6 @@ Route::middleware(['auth','isOwner'])->group(function(){
     // Route::resource('/owner',OwnerController::class);
     Route::get('/owner', 'OwnerController@index');
     Route::get('/productowner', [WelcomeController::class, 'product'])->name('product');
+    Route::get('/transactionOwner', [WelcomeController::class, 'transactionOwner'])->name('transaction');
 });
 

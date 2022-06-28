@@ -70,7 +70,7 @@ class WelcomeController extends Controller
             ]);
         }
     }
-    
+
     public function cart()
     {
         if (Auth::check()) {
@@ -128,6 +128,7 @@ class WelcomeController extends Controller
         $cart = Order::where('id', $id)->increment('status', $status);
         return redirect()->back();
     }
+    
 
     //Owner Side
     public function product_list()
@@ -146,6 +147,19 @@ class WelcomeController extends Controller
     {
         return view('owner.orderOwner', [
             "title" => "orderOwner"
+        ]);
+    }
+
+    public function transactionOwner()
+    {
+        $order = Order::all();
+        $evidence = Evidence_shipping::join('orders', 'Evidence_shipping.order_id', '=', 'orders.id')->get();
+                                    
+        // $evidences = Evidence_shipping::where('order_id', Order::id())->get();
+        return view('owner.transaction', [
+            "title" => "transaction",
+            'orders' => $order,
+            'evidence'=> $evidence,
         ]);
     }
 
