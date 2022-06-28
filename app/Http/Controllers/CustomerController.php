@@ -104,6 +104,7 @@ class CustomerController extends Controller
         $model = User::find($id);
         $model->name = $request->get('name');
         $model->email = $request->get('email');
+        
         $model->password = $request->get('phone');
         $model->password =Hash::make($request['phone']); //Hash::make($request['phone']);
         $model->address = $request->get('address');
