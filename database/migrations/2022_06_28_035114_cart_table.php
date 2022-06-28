@@ -15,7 +15,7 @@ class CartTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('store_id');
+            
             $table->foreignId('user_id');
             $table->foreignId('product_id');
             $table->tinyInteger('product_qty')->nullable();
