@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('layouts.crudLayout')
 @section('content')
 
 <div class="container mt-5 mb-5">
@@ -30,6 +30,10 @@
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="text" name="email" class="form-control" id="email" aria-describedby="email" value="{{Auth::user()->email}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Phone Number</label>
+                        <input type="text" name="phone" class="form-control" id="address" aria-describedby="phone" value="{{Auth::user()->phone}}">
                     </div>
                     <div class="form-group">
                         <label for="address">Address</label>

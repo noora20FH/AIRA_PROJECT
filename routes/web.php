@@ -38,14 +38,10 @@ Route::middleware(['auth','isCustomer'])->group(function(){
     Route::get('/updatecart/{id}/{quantity}', [CartController::class, 'update']);
     Route::get('/deletecart/{carts}', [CartController::class, 'destroy']);
 
-<<<<<<< HEAD
+
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
     Route::get('/transactionCustomer', [WelcomeController::class, 'transactionCustomer'])->name('transaction');
 
-=======
-
-    Route::post('checkout', [CheckoutController::class, 'checkout']);//checkout
->>>>>>> fd7152cb205904bee6f03ce98f99353e5a9b68dc
 });
 
 Route::middleware(['auth','isAdmin'])->group(function(){
