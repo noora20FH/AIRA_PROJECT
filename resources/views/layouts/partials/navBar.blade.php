@@ -19,6 +19,8 @@
                     <li class="{{ ($title === "Wishlist") ? 'nav-item active' : 'nav-item'}}"><a class="nav-link" href="/wishlist">Wishlist</a></li>
                     <li class="{{ ($title === "Cart") ? 'nav-item active' : 'nav-item'}}"><a class="nav-link" href="/cart">Cart</a></li>
                     <li class="{{ ($title === "Checkout") ? 'nav-item active' : 'nav-item'}}"><a class="nav-link" href="/checkout">Checkout</a></li>
+                    <li class="{{ ($title === "Order") ? 'nav-item active' : 'nav-item'}}"><a class="nav-link" href="/transactionCustomer">Order</a></li>
+
                 </ul>
             </div>
         </div>

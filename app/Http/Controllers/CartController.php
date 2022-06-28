@@ -64,4 +64,5 @@ class CartController extends Controller
         Cart::find($id)->delete();
         return redirect()->back()->with('message', 'Product Successfully Delete from Cart');
     }
+    
 }

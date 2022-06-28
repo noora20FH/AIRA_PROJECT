@@ -38,6 +38,8 @@ Route::middleware(['auth','isCustomer'])->group(function(){
     Route::get('/deletecart/{carts}', [CartController::class, 'destroy']);
 
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+    Route::get('/transactionCustomer', [WelcomeController::class, 'transactionCustomer'])->name('transaction');
+
 });
 
 Route::middleware(['auth','isAdmin'])->group(function(){

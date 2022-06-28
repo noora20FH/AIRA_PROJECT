@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Evidence_shipping;
 use App\Models\Order;
 use App\Models\Wishlist;
+use App\Models\cart;
 
 class WelcomeController extends Controller
 {
@@ -192,6 +193,19 @@ class WelcomeController extends Controller
         return view('customer.productCustomer', [
             "title" => "Product",
             "products" => product::all(),
+        ]);
+    }
+
+    public function transactionCustomer()
+    {
+        $order = Order::all();
+        $evidence = Evidence_shipping::join('orders', 'Evidence_shipping.order_id', '=', 'orders.id')->get();
+                                    
+        // $evidences = Evidence_shipping::where('order_id', Order::id())->get();
+        return view('customer.transaction', [
+            "title" => "transaction",
+            'orders' => $order,
+            'evidence'=> $evidence,
         ]);
     }
 }
