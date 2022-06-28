@@ -44,7 +44,7 @@ class CheckoutController extends Controller
         $order->country = $request->input('country');
         $order->status = 0;
         $order->message = $request->input('message');
-        $order->tracking_no = 'NAFStore'.rand(1111,9999);
+        $order->tracking_no = 'AIRACosmetics'.rand(1111,9999);
         $order->grand_total = $request->input('grand_total');
         $order->image_evidence = $request->file('image')->store('image_evidence');
         $order->save();
@@ -54,7 +54,7 @@ class CheckoutController extends Controller
         {
             OrderItem::Create([
                 'order_id' => $order->id,
-                'store_id' => $item->store->store_id,
+                
                 'product_id' => $item->product_id,
                 'qty' => $item->product_qty,
                 'price' => $item->product->price,

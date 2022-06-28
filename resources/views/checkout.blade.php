@@ -112,15 +112,11 @@
                                         <div class="media-body"> <a href="detail.html">{{$cart->product->name}}</a>
                                             <div class="medium">Rp {{$cart->product->price}}<span class="mx-2">|</span> Qty: {{$cart->product_qty}} <span
                                                     class="mx-2">|</span> Subtotal: Rp {{$cart->product_qty*$cart->product->price}}</div>
-                                            <label for="cc-name">Store : {{$cart->product->store->storeName}}</label>
+                                           
                                         </div>
                                     </div>
                                     @php $total += $cart->product_qty*$cart->product->price; @endphp
-                                    @if ($cart->store_id == 1)
-                                    @php $s1 += 1;@endphp
-                                    @elseif ($cart->store_id == 2)
-                                    @php $s2 += 1;@endphp
-                                    @endif
+
                                     @endforeach
 
                                 </div>
