@@ -163,6 +163,7 @@ class WelcomeController extends Controller
         ]);
     }
 
+    // customer 
 
     public function signIn()
     {
@@ -183,6 +184,14 @@ class WelcomeController extends Controller
 
         return view('profile',compact('model'), [
             "title" => "Profile"
+        ]);
+    }
+
+    public function productCustomer()
+    {
+        return view('customer.productCustomer', [
+            "title" => "Product",
+            "products" => product::all(),
         ]);
     }
 }

@@ -26,12 +26,14 @@ Route::put('update-order/{id}/{status}',[WelcomeController::class, 'updateOrder'
 Route::get('/updatecart/{id}/{quantity}', [CartController::class, 'update']);
 Route::get('/deletecart/{carts}', [CartController::class, 'destroy']);
 
+
 Route::middleware(['auth','isCustomer'])->group(function(){
     Route::get('/home', [App\Http\Controllers\WelcomeController::class, 'index'])->name('home');
     Route::get('/shop', [WelcomeController::class, 'shop'])->name('shop');
     Route::get('/wishlist', [WelcomeController::class, 'wishlist'])->name('wishlist');
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::get('/checkout', [WelcomeController::class, 'checkout'])->name('checkout');
+    Route::get('/productCustomer', [WelcomeController::class, 'productCustomer'])->name('product');
 });
 
 Route::middleware(['auth','isAdmin'])->group(function(){
@@ -61,6 +63,7 @@ Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('customerData/show/{id}',[CustomerController::class,'show']);
     Route::get('customerData/edit/{id}',[CustomerController::class,'edit']);
     Route::put('customerData/update/{id}',[CustomerController::class,'update']);
+    
 
     Route::get('/transaction', [WelcomeController::class, 'transaction'])->name('transaction');
     //customerData/update/
