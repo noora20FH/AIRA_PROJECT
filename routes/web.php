@@ -10,6 +10,7 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
@@ -22,9 +23,7 @@ Route::get('/sign-in', [WelcomeController::class, 'SignIn'])->name('auth.sign-in
 Route::get('/sign-up', [WelcomeController::class, 'SignUp'])->name('auth.sign-up');
 Route::GET('/user/profile', [WelcomeController::class, 'profile'])->name('userProfile');
 Route::put('/user/profile/update', [CustomerController::class, 'profile'])->name('customerData.profile');
-Route::put('update-order/{id}/{status}',[WelcomeController::class, 'updateOrder']);
-Route::get('/updatecart/{id}/{quantity}', [CartController::class, 'update']);
-Route::get('/deletecart/{carts}', [CartController::class, 'destroy']);
+
 
 
 Route::middleware(['auth','isCustomer'])->group(function(){
@@ -32,8 +31,13 @@ Route::middleware(['auth','isCustomer'])->group(function(){
     Route::get('/shop', [WelcomeController::class, 'shop'])->name('shop');
     Route::get('/wishlist', [WelcomeController::class, 'wishlist'])->name('wishlist');
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
-    Route::get('/checkout', [WelcomeController::class, 'checkout'])->name('checkout');
+    
+    Route::put('update-order/{id}/{status}',[WelcomeController::class, 'updateOrder']);
     Route::get('/productCustomer', [WelcomeController::class, 'productCustomer'])->name('product');
+    Route::get('/updatecart/{id}/{quantity}', [CartController::class, 'update']);
+    Route::get('/deletecart/{carts}', [CartController::class, 'destroy']);
+
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 });
 
 Route::middleware(['auth','isAdmin'])->group(function(){
