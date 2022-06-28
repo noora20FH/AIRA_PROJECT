@@ -23,21 +23,23 @@ Route::get('/sign-in', [WelcomeController::class, 'SignIn'])->name('auth.sign-in
 Route::get('/sign-up', [WelcomeController::class, 'SignUp'])->name('auth.sign-up');
 Route::GET('/user/profile', [WelcomeController::class, 'profile'])->name('userProfile');
 Route::put('/user/profile/update', [CustomerController::class, 'profile'])->name('customerData.profile');
-
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 
 
 Route::middleware(['auth','isCustomer'])->group(function(){
     Route::get('/home', [App\Http\Controllers\WelcomeController::class, 'index'])->name('home');
     Route::get('/shop', [WelcomeController::class, 'shop'])->name('shop');
     Route::get('/wishlist', [WelcomeController::class, 'wishlist'])->name('wishlist');
-    Route::get('/cart', [CartController::class, 'index'])->name('cart');
-    
+
     Route::put('update-order/{id}/{status}',[WelcomeController::class, 'updateOrder']);
     Route::get('/productCustomer', [WelcomeController::class, 'productCustomer'])->name('product');
+    Route::get('/cart', [CartController::class, 'index'])->name('cart');
+    Route::post('add_to_cart', [CartController::class, 'store']);//add-to-cart
     Route::get('/updatecart/{id}/{quantity}', [CartController::class, 'update']);
     Route::get('/deletecart/{carts}', [CartController::class, 'destroy']);
 
-    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+
+    Route::post('checkout', [CheckoutController::class, 'checkout']);//checkout
 });
 
 Route::middleware(['auth','isAdmin'])->group(function(){

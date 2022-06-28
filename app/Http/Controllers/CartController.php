@@ -43,7 +43,7 @@ class CartController extends Controller
             }else{
 
                 Cart::create([
-                    'store_id' => $product_store,
+                    
                     'user_id' => Auth::id(),
                     'product_id' => $product_id ,
                     'product_qty' => 1,
